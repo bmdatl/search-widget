@@ -1,1 +1,3 @@
-<p>results works!</p>
+<div *ngFor="let item of searchResults" (click)="resultClicked.emit(item)">
+  {{item.name}}
+</div>

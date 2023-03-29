@@ -1,1 +1,5 @@
-<p>news-item works!</p>
+<div *ngIf="newsItem" class="news-item container flex-col" (click)="navToUrl(newsItem.url)">
+  <img [src]="imageToDisplay" [alt]="newsItem.title"/>
+  <div class="headline">{{newsItem.title}}</div>
+  <div class="abstract">{{newsItem.abstract}}</div>
+</div>

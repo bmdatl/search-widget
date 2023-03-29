@@ -1,1 +1,13 @@
-<p>weather-strip works!</p>
+<div class="weather-strip container" *ngIf="weatherData$ | async as weatherData">
+  <div class="flex-row">
+    <div class="weather-data-item">
+      {{weatherData[0].date | date : 'MMM d, y' }}
+    </div>
+    <div class="weather-data-item">
+      {{weatherData[0].summary}}
+    </div>
+    <div class="weather-data-item">
+      Temp: {{weatherData[0].temperatureC | temperature }} / {{weatherData[0].temperatureF | temperature : { unit: 'F'} }}
+    </div>
+  </div>
+</div>

@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { MediaFormats, NewsItem } from "../../../../core/models/news/news";
+import { Observable } from "rxjs";
 
 @Component({
   selector: 'app-news',
@@ -6,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./news.component.css']
 })
 export class NewsComponent {
-
+  @Input() news$: Observable<NewsItem[]>;
+  imgFormats = MediaFormats;
 }

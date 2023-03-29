@@ -1,0 +1,33 @@
+<div class="container flex-col">
+  <div class="container flex-row">
+    <app-search-bar #searchBar (searchInputChange)="onSearchChanged($event)"></app-search-bar>
+
+    <div class="weather">
+      <app-weather-strip *ngIf="weatherData$ | async" [weatherData$]="weatherData$"></app-weather-strip>
+    </div>
+  </div>
+
+  <div *ngIf="noActiveSearch$ | async; else searchPage" class="flex-col">
+    <!-- todo: rename these classes - they should be generic css classes, specific styling is done in the component -->
+    <div class="news">
+      <app-news [news$]="articles$"></app-news>
+    </div>
+  </div>
+
+  <ng-template #searchPage>
+    <div class="flex-row">
+
+      <div class="results">
+        <app-results [searchResults]="results" (resultClicked)="handleSearchResultClicked($event)"></app-results>
+      </div>
+
+      <div class="selection-details">
+        <app-selection-details [selectedResult]="selectedResult"></app-selection-details>
+      </div>
+
+    </div>
+  </ng-template>
+
+</div>
+
+

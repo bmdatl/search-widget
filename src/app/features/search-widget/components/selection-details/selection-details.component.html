@@ -1,1 +1,10 @@
-<p>selection-details works!</p>
+<div *ngIf="selectedResult" class="container flex-col" style="margin-top: 5em;">
+  <div>{{selectedResult.name}}</div>
+  <div>{{selectedResult.description}}</div>
+  <div *ngIf="selectedResult.type === 'file'">
+    file icon goes here: {{selectedResult.icon}}
+  </div>
+  <div *ngIf="selectedResult.type === 'app'">
+    app icon goes here: {{selectedResult.icon}}
+  </div>
+</div>

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { LocalFile } from "../../../../shared/services/local-search.service";
 
 @Component({
   selector: 'app-selection-details',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./selection-details.component.css']
 })
 export class SelectionDetailsComponent {
-
+  @Input() selectedResult: LocalFile;
 }
