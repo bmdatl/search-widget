@@ -1,2 +1,10 @@
-<input #searchInput (input)="inputChanged(searchInput.value)" placeholder="Search for files or apps"/>
+<div class="container center">
+  <mat-form-field>
+    <mat-label>Search local files or apps</mat-label>
+    <input matInput #searchInput [(ngModel)]="searchValue" (input)="inputChanged(searchInput.value)" placeholder="Search for files or apps" />
+    <button *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear" (click)="clearSearch()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
 

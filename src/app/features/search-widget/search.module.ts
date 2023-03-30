@@ -12,6 +12,13 @@ import { WeatherService } from "../../shared/services/weather.service";
 import { LocalSearchService } from "../../shared/services/local-search.service";
 import { TemperaturePipe } from "../../shared/pipes/temperature.pipe";
 import { MatGridListModule } from "@angular/material/grid-list";
+import { MatCardModule } from "@angular/material/card";
+import { MatInputModule } from "@angular/material/input";
+import { MatButtonModule } from "@angular/material/button";
+import { MatIconModule } from "@angular/material/icon";
+import { FormsModule } from "@angular/forms";
+import { MatListModule } from "@angular/material/list";
+import { DragDropModule } from "@angular/cdk/drag-drop";
 
 
 
@@ -30,7 +37,14 @@ import { MatGridListModule } from "@angular/material/grid-list";
   imports: [
     CommonModule,
     SharedModule,
-    MatGridListModule
+    MatGridListModule,
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    FormsModule,
+    MatListModule,
+    DragDropModule
   ],
   providers: [
     NewsService,

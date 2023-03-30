@@ -22,7 +22,7 @@ export class LocalSearchService {
   private apps: LocalFile[] = [
     { name: 'app1.exe', icon: 'iconUrl', description: 'app 1 description', type: 'app' },
     { name: 'app2.exe', icon: 'iconUrl', description: 'app 2 description', type: 'app' },
-    { name: 'app3.exe', icon: 'iconUrl', description: 'app 3 description', type: 'app' }
+    { name: 'fileapp3.exe', icon: 'iconUrl', description: 'app 3 description', type: 'app' }
   ];
 
   searchLocalSystem(query: string): Observable<LocalFile[]> {

@@ -7,6 +7,8 @@ import { WeatherStripComponent } from './shared/components/weather-strip/weather
 import { SearchModule } from "./features/search-widget/search.module";
 import { SharedModule } from "./shared/shared.module";
 import { HttpClientModule } from "@angular/common/http";
+import { MatCardModule } from "@angular/material/card";
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -17,6 +19,8 @@ import { HttpClientModule } from "@angular/common/http";
     BrowserModule,
     HttpClientModule,
     SearchModule,
+    MatCardModule,
+    NoopAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

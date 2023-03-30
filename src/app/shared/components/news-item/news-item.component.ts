@@ -9,6 +9,7 @@ import { MediaFormats, NewsItem } from "../../../core/models/news/news";
 export class NewsItemComponent implements OnChanges {
   @Input() newsItem: NewsItem;
   @Input() imgFormat: MediaFormats = MediaFormats.THUMB;
+  @Input() featured;
 
   imageToDisplay: string;
 

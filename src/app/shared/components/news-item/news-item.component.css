@@ -1,3 +1,9 @@
 .news-item {
   cursor: pointer;
+  margin: 3em;
+}
+
+.regular-card {
+  height: 325px;
+  width: 450px;
 }

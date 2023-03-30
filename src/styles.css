@@ -1,1 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+.mat-mdc-card.news-card {
+  border-color: cadetblue;
+  border-width: 2px;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.main-container {
+  margin: 0 5em;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.center {
+  justify-content: center;
+  align-content: center;
+}

@@ -1,5 +1,11 @@
-<div *ngIf="newsItem" class="news-item container flex-col" (click)="navToUrl(newsItem.url)">
-  <img [src]="imageToDisplay" [alt]="newsItem.title"/>
-  <div class="headline">{{newsItem.title}}</div>
-  <div class="abstract">{{newsItem.abstract}}</div>
-</div>
+<mat-card class="news-item" *ngIf="newsItem" [ngClass]="{'regular-card': !featured}">
+  <mat-card-header>
+    <mat-card-title-group>
+      <mat-card-title>{{newsItem.title}}</mat-card-title>
+      <img mat-card-xl-image [src]="imageToDisplay" (click)="navToUrl(newsItem.url)">
+    </mat-card-title-group>
+  </mat-card-header>
+  <mat-card-content>
+    {{newsItem.abstract | truncate : 175 }}
+  </mat-card-content>
+</mat-card>

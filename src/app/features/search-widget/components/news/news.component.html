@@ -1,10 +1,11 @@
-<mat-grid-list cols="3">
-  <mat-grid-tile *ngFor="let newsItem of news$ | async; let i = index">
-    <div *ngIf="i === 0; else smallSection">
-      <app-news-item [newsItem]="newsItem" [imgFormat]="imgFormats.THREEBYTWO"></app-news-item>
-    </div>
-    <ng-template #smallSection>
-      <app-news-item [newsItem]="newsItem"></app-news-item>
-    </ng-template>
-  </mat-grid-tile>
-</mat-grid-list>
+<div *ngIf="news$ | async as news">
+  <!-- Render the first news item in a separate row -->
+  <app-news-item [newsItem]="news[0]" [imgFormat]="imgFormats.THREEBYTWO" featured="true"></app-news-item>
+
+  <!-- Render the rest of the news items in a row with three columns -->
+  <mat-grid-list cols="3" gutterSize="20" rowHeight="350">
+    <mat-grid-tile *ngFor="let newsItem of news.slice(1)" [colspan]="1">
+      <app-news-item [newsItem]="newsItem" [imgFormat]="imgFormats.THUMB"></app-news-item>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

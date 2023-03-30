@@ -4,6 +4,8 @@ import { WeatherStripComponent } from "./components/weather-strip/weather-strip.
 import { NewsItemComponent } from "./components/news-item/news-item.component";
 import { TemperaturePipe } from './pipes/temperature.pipe';
 import { RouterTestingModule } from "@angular/router/testing";
+import { MatCardModule } from "@angular/material/card";
+import { TruncatePipe } from './pipes/truncate.pipe';
 
 
 
@@ -11,11 +13,14 @@ import { RouterTestingModule } from "@angular/router/testing";
   declarations: [
     WeatherStripComponent,
     NewsItemComponent,
-    TemperaturePipe
+    TemperaturePipe,
+    TruncatePipe,
+    TruncatePipe
   ],
     imports: [
         CommonModule,
-        RouterTestingModule
+        RouterTestingModule,
+        MatCardModule
     ],
   exports: [
     WeatherStripComponent,

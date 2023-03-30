@@ -7,5 +7,5 @@ import { LocalFile } from "../../../../shared/services/local-search.service";
   styleUrls: ['./selection-details.component.css']
 })
 export class SelectionDetailsComponent {
-  @Input() selectedResult: LocalFile;
+  @Input() selectedResult: LocalFile | null;
 }

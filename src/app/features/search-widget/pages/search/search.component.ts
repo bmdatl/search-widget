@@ -2,7 +2,7 @@ import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '
 import { NewsService } from "../../../../shared/services/news.service";
 import { WeatherService } from "../../../../shared/services/weather.service";
 import { LocalFile, LocalSearchService } from "../../../../shared/services/local-search.service";
-import { Observable } from "rxjs";
+import { Observable, tap } from "rxjs";
 import { SearchBarComponent } from "../../../../shared/components/search-bar/search-bar.component";
 import { NewsItem } from "../../../../core/models/news/news";
 import { WeatherData } from "../../../../core/models/weather/weather-data";
@@ -28,7 +28,7 @@ export class SearchComponent implements OnInit, AfterViewInit {
   noActiveSearch$;
 
   results: LocalFile[];
-  selectedResult: LocalFile;
+  selectedResult: LocalFile | null;
 
   articles$: Observable<NewsItem[]>;
   weatherData$: Observable<WeatherData[]>;
@@ -47,9 +47,14 @@ export class SearchComponent implements OnInit, AfterViewInit {
   }
 
   // track whether the search input currently has a value or not
-  // there is a better way to do this
   ngAfterViewInit() {
-    this.noActiveSearch$ = this.searchBar.noActiveSearch$;
+    this.noActiveSearch$ = this.searchBar.noActiveSearch$.pipe(
+      tap(notActive => {
+        if (notActive) {
+          this.selectedResult = null;
+        }
+      })
+    );
     this.cdr.detectChanges();
   }
 

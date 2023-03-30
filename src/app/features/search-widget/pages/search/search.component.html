@@ -1,6 +1,6 @@
 <div class="container flex-col">
   <div class="container flex-row">
-    <app-search-bar #searchBar (searchInputChange)="onSearchChanged($event)"></app-search-bar>
+    <app-search-bar style="width: 100%;" #searchBar (searchInputChange)="onSearchChanged($event)"></app-search-bar>
 
     <div class="weather">
       <app-weather-strip *ngIf="weatherData$ | async" [weatherData$]="weatherData$"></app-weather-strip>
@@ -18,7 +18,11 @@
     <div class="flex-row">
 
       <div class="results">
-        <app-results [searchResults]="results" (resultClicked)="handleSearchResultClicked($event)"></app-results>
+        <app-results
+          [searchResults]="results"
+          [selectedItem]="selectedResult"
+          (resultClicked)="handleSearchResultClicked($event)">
+        </app-results>
       </div>
 
       <div class="selection-details">

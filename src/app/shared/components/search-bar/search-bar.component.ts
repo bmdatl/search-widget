@@ -1,6 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { debounce, debounceTime, map, startWith, Subject } from "rxjs";
-import { query } from "@angular/animations";
 
 
 // dumb search that emits input value as an event
@@ -10,8 +9,11 @@ import { query } from "@angular/animations";
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent implements OnInit {
+  @ViewChild('searchInput') searchInput: HTMLInputElement;
   @Output() searchInputChange = new EventEmitter<string>();
   @Input() debounce = 500;
+
+  searchValue = '';
 
   // hide the value of the current query so it's only exposed to classes that request it
   private querySubject$ = new Subject<string>();
@@ -26,6 +28,11 @@ export class SearchBarComponent implements OnInit {
 
   inputChanged(query: string) {
     this.querySubject$.next(query);
+  }
+
+  clearSearch() {
+    this.querySubject$.next('');
+    this.searchValue = '';
   }
 
   ngOnInit() {
