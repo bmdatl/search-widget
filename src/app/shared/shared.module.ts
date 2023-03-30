@@ -6,6 +6,8 @@ import { TemperaturePipe } from './pipes/temperature.pipe';
 import { RouterTestingModule } from "@angular/router/testing";
 import { MatCardModule } from "@angular/material/card";
 import { TruncatePipe } from './pipes/truncate.pipe';
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatIconModule } from "@angular/material/icon";
 
 
 
@@ -17,11 +19,13 @@ import { TruncatePipe } from './pipes/truncate.pipe';
     TruncatePipe,
     TruncatePipe
   ],
-    imports: [
-        CommonModule,
-        RouterTestingModule,
-        MatCardModule
-    ],
+  imports: [
+    CommonModule,
+    RouterTestingModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatIconModule
+  ],
   exports: [
     WeatherStripComponent,
     NewsItemComponent

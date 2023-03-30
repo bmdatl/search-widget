@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { LocalFile } from "../../../../shared/services/local-search.service";
 import { CdkDragDrop, moveItemInArray } from "@angular/cdk/drag-drop";
 

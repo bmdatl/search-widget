@@ -1,9 +1,3 @@
-<!--<mat-action-list cdkDropList (cdkDropListDropped)="drop($event)">-->
-<!--  <button cdkDrag mat-list-item *ngFor="let item of searchResults" (click)="resultClicked.emit(item)">-->
-<!--    {{item.name}}-->
-<!--  </button>-->
-<!--</mat-action-list>-->
-
 <mat-list cdkDropList (cdkDropListDropped)="drop($event)">
   <mat-list-item cdkDrag *ngFor="let item of searchResults" (click)="resultClicked.emit(item)" [ngClass]="{ 'selected': selectedItem === item }">
     {{item.name}}

@@ -31,7 +31,7 @@ export class SearchComponent implements OnInit, AfterViewInit {
   selectedResult: LocalFile | null;
 
   articles$: Observable<NewsItem[]>;
-  weatherData$: Observable<WeatherData[]>;
+  weatherData$: Observable<WeatherData>;
 
   constructor(
     private newsService: NewsService,

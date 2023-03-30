@@ -1,6 +1,10 @@
 export interface WeatherData {
-  date: string;
-  summary: string;
-  temperatureC: number;
-  temperatureF: number;
+  current_weather: {
+    time: string;
+    temperature: number;
+    winddirection: number;
+    windspeed: number;
+  };
+  latitude: number;
+  longitude: number;
 }

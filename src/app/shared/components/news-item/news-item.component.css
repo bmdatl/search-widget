@@ -1,9 +1,15 @@
 .news-item {
   cursor: pointer;
   margin: 3em;
+  display: flex;
+  flex-direction: column;
 }
 
 .regular-card {
   height: 325px;
   width: 450px;
+}
+
+.mat-card-title, .mat-card-content {
+  overflow-wrap: break-word;
 }

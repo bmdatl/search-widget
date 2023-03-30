@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from "rxjs";
+import { map, Observable, of, tap } from "rxjs";
+import { HttpClient } from "@angular/common/http";
 
 export interface LocalFile {
   name: string;
@@ -12,6 +13,16 @@ export interface LocalFile {
   providedIn: 'root'
 })
 export class LocalSearchService {
+
+  constructor(
+    private http: HttpClient
+  ) {
+
+  }
+
+
+  // local backend url for file search
+  // apiUrl = 'https://localhost:7242/search'
 
   private files: LocalFile[] = [
     { name: 'file1.txt', icon: 'iconUrl', description: 'file 1 description', type: 'file' },
@@ -35,4 +46,18 @@ export class LocalSearchService {
     );
     return of(files.concat(apps));
   }
+
+  /*
+  unused backend search - ran into issue with requests being immediately cancelled
+   */
+  // searchLocalSystem(query: string): any {
+    // return this.http.get(this.apiUrl, {
+    //   params: { query }
+    // }).pipe(
+    //   tap(res => {
+    //     console.log(res);
+    //   })
+    // )
+    // return this.http.get('https://localhost:7242/search?query=file');
+  // }
 }

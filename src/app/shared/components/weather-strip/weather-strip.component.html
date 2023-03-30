@@ -1,13 +1,17 @@
-<div class="weather-strip container" *ngIf="weatherData$ | async as weatherData">
-  <div class="flex-row">
+<mat-toolbar class="weather-bar" color="primary" *ngIf="weatherData$ | async as weatherData">
+  <mat-toolbar-row>
+    <span>Weather for {{ weatherData.longitude }}, {{ weatherData.latitude }}</span>
     <div class="weather-data-item">
-      {{weatherData[0].date | date : 'MMM d, y' }}
+      {{weatherData.current_weather.time | date : 'MMM d, y hh:mm' }}
     </div>
     <div class="weather-data-item">
-      {{weatherData[0].summary}}
+      Wind Direction: {{weatherData.current_weather.winddirection}}
     </div>
     <div class="weather-data-item">
-      Temp: {{weatherData[0].temperatureC | temperature }} / {{weatherData[0].temperatureF | temperature : { unit: 'F'} }}
+      Wind Speed: {{weatherData.current_weather.windspeed}}
     </div>
-  </div>
-</div>
+    <div class="weather-data-item">
+      Temp: {{weatherData.current_weather.temperature | temperature }}
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
