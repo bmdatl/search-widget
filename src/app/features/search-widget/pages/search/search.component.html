@@ -21,7 +21,9 @@
         <app-results
           [searchResults]="results"
           [selectedItem]="selectedResult"
-          (resultClicked)="handleSearchResultClicked($event)">
+          [isLoading$]="isLoading$"
+          (resultClicked)="handleSearchResultClicked($event)"
+        >
         </app-results>
       </div>
 

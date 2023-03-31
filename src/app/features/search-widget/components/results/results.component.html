@@ -1,5 +1,10 @@
-<mat-list cdkDropList (cdkDropListDropped)="drop($event)">
-  <mat-list-item cdkDrag *ngFor="let item of searchResults" (click)="resultClicked.emit(item)" [ngClass]="{ 'selected': selectedItem === item }">
-    {{item.name}}
-  </mat-list-item>
-</mat-list>
+<app-search-loader *ngIf="isLoading$ | async; else notLoading">
+</app-search-loader>
+<ng-template #notLoading>
+  <mat-list cdkDropList (cdkDropListDropped)="drop($event)">
+    <mat-list-item cdkDrag *ngFor="let item of searchResults" (click)="resultClicked.emit(item)" [ngClass]="{ 'selected': selectedItem === item }">
+      {{item.name}}
+    </mat-list-item>
+  </mat-list>
+</ng-template>
+

@@ -2,7 +2,7 @@ import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '
 import { NewsService } from "../../../../shared/services/news.service";
 import { WeatherService } from "../../../../shared/services/weather.service";
 import { LocalFile, LocalSearchService } from "../../../../shared/services/local-search.service";
-import { Observable, tap } from "rxjs";
+import { finalize, Observable, of, tap } from "rxjs";
 import { SearchBarComponent } from "../../../../shared/components/search-bar/search-bar.component";
 import { NewsItem } from "../../../../core/models/news/news";
 import { WeatherData } from "../../../../core/models/weather/weather-data";
@@ -29,6 +29,8 @@ export class SearchComponent implements OnInit, AfterViewInit {
 
   articles$: Observable<NewsItem[]>;
   weatherData$: Observable<WeatherData>;
+
+  isLoading$: Observable<boolean>;
 
   constructor(
     private newsService: NewsService,
@@ -57,10 +59,15 @@ export class SearchComponent implements OnInit, AfterViewInit {
   }
 
   onSearchChanged(query: string) {
-    this.searchService.searchLocalSystem(query).pipe()
-      .subscribe((results: LocalFile[]) => {
+    this.isLoading$ = of(true);
+    this.searchService.searchLocalSystem(query).pipe(
+      tap((results: LocalFile[]) => {
         this.results = results;
-      });
+      }),
+      finalize(() => {
+        this.isLoading$ = of(false);
+      })
+    ).subscribe();
   }
 
   handleSearchResultClicked(selection: LocalFile) {

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { LocalFile } from "../../../../shared/services/local-search.service";
 import { CdkDragDrop, moveItemInArray } from "@angular/cdk/drag-drop";
+import { Observable } from "rxjs";
 
 @Component({
   selector: 'app-results',
@@ -10,6 +11,7 @@ import { CdkDragDrop, moveItemInArray } from "@angular/cdk/drag-drop";
 export class ResultsComponent {
   @Input() searchResults: LocalFile[];
   @Input() selectedItem: LocalFile | null;
+  @Input() isLoading$: Observable<boolean>;
 
   // this could be changed to handle selectedResult here
   @Output() resultClicked = new EventEmitter<LocalFile>();
