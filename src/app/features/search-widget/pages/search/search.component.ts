@@ -10,11 +10,8 @@ import { WeatherData } from "../../../../core/models/weather/weather-data";
 
 /**
  * TODO:
- * • rename app prefix to relevant module
- * • rename classes with properly styled container items
- * • implement drag and drop for search results or news items
- * • check old project for exports/index strategy
  * • add relative imports
+ * • set up takeUntil
  */
 
 @Component({
@@ -47,6 +44,7 @@ export class SearchComponent implements OnInit, AfterViewInit {
   }
 
   // track whether the search input currently has a value or not
+  // clear selectedResult if search is cleared
   ngAfterViewInit() {
     this.noActiveSearch$ = this.searchBar.noActiveSearch$.pipe(
       tap(notActive => {
@@ -58,13 +56,11 @@ export class SearchComponent implements OnInit, AfterViewInit {
     this.cdr.detectChanges();
   }
 
-  // todo: this can be better. i don't want to create a new subscription every time the search changes.
   onSearchChanged(query: string) {
     this.searchService.searchLocalSystem(query).pipe()
       .subscribe((results: LocalFile[]) => {
         this.results = results;
-        // manually unsubscribe - normally would use a takeUntil operator to automatically unsubscribe when the onDestroy hook fires
-      }).unsubscribe();
+      });
   }
 
   handleSearchResultClicked(selection: LocalFile) {

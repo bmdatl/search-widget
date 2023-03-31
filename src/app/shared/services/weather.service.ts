@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { EMPTY, Observable, of, switchMap, tap, take } from "rxjs";
 import { WeatherData } from "../../core/models/weather/weather-data";
@@ -11,7 +11,7 @@ interface Coordinates {
 @Injectable({
   providedIn: 'root'
 })
-export class WeatherService implements OnInit {
+export class WeatherService {
 
   // todo: move to config file
   apiUrl = 'https://api.open-meteo.com/v1/forecast';
@@ -21,10 +21,6 @@ export class WeatherService implements OnInit {
   constructor(
     private http: HttpClient
   ) {
-  }
-
-  ngOnInit() {
-
   }
 
   getWeatherData(): Observable<WeatherData> {

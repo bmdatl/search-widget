@@ -11,8 +11,8 @@ export class ResultsComponent {
   @Input() searchResults: LocalFile[];
   @Input() selectedItem: LocalFile | null;
 
-  // todo: type this to be a generic file emission
-  @Output() resultClicked = new EventEmitter<any>();
+  // this could be changed to handle selectedResult here
+  @Output() resultClicked = new EventEmitter<LocalFile>();
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.searchResults, event.previousIndex, event.currentIndex);

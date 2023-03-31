@@ -16,7 +16,7 @@ import { MatCardModule } from "@angular/material/card";
 import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatListModule } from "@angular/material/list";
 import { DragDropModule } from "@angular/cdk/drag-drop";
 
@@ -44,7 +44,8 @@ import { DragDropModule } from "@angular/cdk/drag-drop";
     MatIconModule,
     FormsModule,
     MatListModule,
-    DragDropModule
+    DragDropModule,
+    ReactiveFormsModule
   ],
   providers: [
     NewsService,

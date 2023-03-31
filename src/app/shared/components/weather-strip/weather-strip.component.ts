@@ -7,11 +7,6 @@ import { WeatherData } from "../../../core/models/weather/weather-data";
   templateUrl: './weather-strip.component.html',
   styleUrls: ['./weather-strip.component.css']
 })
-export class WeatherStripComponent implements OnInit {
+export class WeatherStripComponent {
   @Input() weatherData$: Observable<WeatherData>;
-
-  ngOnInit() {
-
-  }
-
 }
